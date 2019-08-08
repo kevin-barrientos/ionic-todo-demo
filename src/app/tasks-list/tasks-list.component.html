@@ -1,5 +1,8 @@
 <div *ngFor="let task of tasks">
   <h3>{{ task.title }}</h3>
   <p>{{ task.description }}</p>
-  <span>{{ task.dueDate | date:'short'}}</span>
+  <span>{{ task.dueDate | date: 'short' }}</span>
+  <i class="material-icons" (click)="onDoneClicked(task)">
+    done
+  </i>
 </div>

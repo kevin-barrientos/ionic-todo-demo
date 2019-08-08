@@ -29,4 +29,17 @@ export class TasksService {
   add(task: Task): void {
     this.tasks.push(task);
   }
+
+  remove(task: Task): void {
+
+    // Esto funcionara, sin embargo no es un caso real ya que comunmente
+    // la referencia del objeto cambiara. Ademas no es buena practica
+    // que las listas sean mutables.
+
+    // const i = this.tasks.findIndex(t => t === task);
+    // this.tasks.splice(i, 1);
+
+    this.tasks = this.tasks.filter(t => t !== task);
+    console.log('TASKS', this.tasks);
+  }
 }

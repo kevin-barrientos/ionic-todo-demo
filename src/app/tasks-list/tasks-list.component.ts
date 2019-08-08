@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TasksService } from '../services/tasks.service';
+import { Task } from '../models/task';
 
 @Component({
   selector: 'todo-tasks-list',
@@ -14,5 +15,9 @@ export class TasksListComponent implements OnInit {
 
   ngOnInit(): void {
     this.tasks = this.tasksService.tasks;
+  }
+
+  onDoneClicked(task: Task): void {
+    this.tasksService.remove(task);
   }
 }
