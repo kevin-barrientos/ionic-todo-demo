@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../models/task';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TasksService {
 
-  tasks: Task[] = [
+  tasks$: Subject<Task[]> = new BehaviorSubject([]);
+
+  private _tasks: Task[] = [
     {
       title: 'Task 1',
       dueDate: new Date().toISOString(),
@@ -24,10 +27,13 @@ export class TasksService {
     },
   ];
 
-  constructor() { }
+  constructor() {
+    this.tasks$.next([...this._tasks]);
+  }
 
   add(task: Task): void {
-    this.tasks.push(task);
+    this._tasks.push(task);
+    this.tasks$.next([...this._tasks]);
   }
 
   remove(task: Task): void {
@@ -39,7 +45,7 @@ export class TasksService {
     // const i = this.tasks.findIndex(t => t === task);
     // this.tasks.splice(i, 1);
 
-    this.tasks = this.tasks.filter(t => t !== task);
-    console.log('TASKS', this.tasks);
+    this._tasks = this._tasks.filter(t => t !== task);
+    this.tasks$.next([...this._tasks]);
   }
 }
