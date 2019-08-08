@@ -1,9 +1,11 @@
 <form>
   <label for="title">Título</label>
-  <input type="text" name="title"/>
+  <input type="text" name="title" #titleInput/>
   <label for="dueDate">Fecha de vencimiento</label>
-  <input type="text" name="dueDate"/>
+  <input type="text" name="dueDate"#dueDateInput/>
   <label for="description">Descripción</label>
-  <textarea name="description"></textarea>
-  <button type="button" (click)="onSaveClicked()">GUARDAR</button>
+  <textarea name="description" #descriptionInput></textarea>
+  <button type="button" (click)="onSaveClicked(titleInput.value, dueDateInput.value, descriptionInput.value)">
+    GUARDAR
+  </button>
 </form>

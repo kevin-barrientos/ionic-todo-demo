@@ -12,7 +12,7 @@ export class TaskFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSaveClicked(): void {
-    console.log('Task saved');
+  onSaveClicked(title: string, dueDate: string, desc: string): void {
+    console.log('Task form values', {title, dueDate, desc});
   }
 }
