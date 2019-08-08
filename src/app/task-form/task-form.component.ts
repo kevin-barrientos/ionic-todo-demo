@@ -1,31 +1,25 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { TasksService } from '../services/tasks.service';
+import { Task } from '../models/task';
 
 @Component({
   selector: 'todo-task-form',
   templateUrl: './task-form.component.html',
-  styleUrls: ['./task-form.component.css']
+  styleUrls: ['./task-form.component.css'],
 })
 export class TaskFormComponent implements OnInit {
-
-  @Output() submitted: EventEmitter<any> = new EventEmitter();
-
-  task: {
-    title: string,
-    dueDate: string,
-    description: string,
-  } =  {
+  task: Task = {
     title: '',
     dueDate: '',
     description: '',
   };
 
-  constructor() { }
+  constructor(private tasksService: TasksService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSaveClicked(task: any): void {
-    this.submitted.emit(task);
-    this.task = {title: '', dueDate: '', description: ''};
+    this.tasksService.add(task);
+    this.task = { title: '', dueDate: '', description: '' };
   }
 }
