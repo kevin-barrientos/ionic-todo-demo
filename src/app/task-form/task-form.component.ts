@@ -9,12 +9,23 @@ export class TaskFormComponent implements OnInit {
 
   @Output() submitted: EventEmitter<any> = new EventEmitter();
 
+  task: {
+    title: string,
+    dueDate: string,
+    description: string,
+  } =  {
+    title: '',
+    dueDate: '',
+    description: '',
+  };
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  onSaveClicked(title: string, dueDate: string, description: string): void {
-    this.submitted.emit({title, dueDate, description});
+  onSaveClicked(task: any): void {
+    this.submitted.emit(task);
+    this.task = {title: '', dueDate: '', description: ''};
   }
 }

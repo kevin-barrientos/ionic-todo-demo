@@ -1,11 +1,11 @@
 <form>
   <label for="title">Título</label>
-  <input type="text" name="title" #titleInput/>
+  <input type="text" name="title" [(ngModel)]="task.title"/>
   <label for="dueDate">Fecha de vencimiento</label>
-  <input type="text" name="dueDate"#dueDateInput/>
+  <input type="text" name="dueDate"[(ngModel)]="task.dueDate"/>
   <label for="description">Descripción</label>
-  <textarea name="description" #descriptionInput></textarea>
-  <button type="button" (click)="onSaveClicked(titleInput.value, dueDateInput.value, descriptionInput.value)">
+  <textarea name="description" [(ngModel)]="task.description"></textarea>
+  <button type="button" (click)="onSaveClicked(task)">
     GUARDAR
   </button>
 </form>
