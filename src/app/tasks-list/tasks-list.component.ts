@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'todo-tasks-list',
@@ -6,21 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./tasks-list.component.css'],
 })
 export class TasksListComponent {
-  tasks: any[] = [
-    {
-      title: 'Task 1',
-      dueDate: new Date().toISOString(),
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-    },
-    {
-      title: 'Task 2',
-      dueDate: new Date().toISOString(),
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-    },
-    {
-      title: 'Task 3',
-      dueDate: new Date().toISOString(),
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-    },
-  ];
+  @Input() tasks: any[] = [];
 }
