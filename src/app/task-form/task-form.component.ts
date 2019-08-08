@@ -12,4 +12,7 @@ export class TaskFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSaveClicked(): void {
+    console.log('Task saved');
+  }
 }
