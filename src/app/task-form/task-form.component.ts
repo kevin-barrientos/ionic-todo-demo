@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'todo-task-form',
@@ -7,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskFormComponent implements OnInit {
 
+  @Output() submitted: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  onSaveClicked(title: string, dueDate: string, desc: string): void {
-    console.log('Task form values', {title, dueDate, desc});
+  onSaveClicked(title: string, dueDate: string, description: string): void {
+    this.submitted.emit({title, dueDate, description});
   }
 }

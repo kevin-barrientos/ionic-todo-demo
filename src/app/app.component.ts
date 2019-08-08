@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'todo-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'todo-app';
@@ -25,4 +25,8 @@ export class AppComponent {
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     },
   ];
+
+  onTaskSubmitted(task: any): void {
+    this.tasks.push(task);
+  }
 }
