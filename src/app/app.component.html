@@ -1,2 +1,5 @@
-<todo-task-form (submitted)="onTaskSubmitted($event)"></todo-task-form>
-<todo-tasks-list [tasks]="tasks"></todo-tasks-list>
+<div>
+  <a routerLink='/tasks'>Tasks</a> |
+  <a routerLink='/tasks/form'>Form</a>
+</div>
+<router-outlet></router-outlet>
